@@ -47,10 +47,15 @@ async function loadWind(url) {
     //console.log("Zeitpunkt Vorhersage (+Stunden)", jsondata[0].header.forecastTime);
     
     let forecastDate = new Date(jsondata[0].header.refTime);
-    console.log("Echtes Datum Erstellung", forecastDate);
+    //console.log("Echtes Datum Erstellung", forecastDate);
     forecastDate.setHours(forecastDate.getHours() + jsondata[0].header.refTime);
-    console.log("Echtes Datum Vorhersage", forecastDate)
-    console.log("Vorhersagezeitpunkt", formatDate(forecastDate));
+    //console.log("Echtes Datum Vorhersage", forecastDate)
+    //console.log("Vorhersagezeitpunkt", formatDate(forecastDate));
+
+    let forecastLabel = formatDate(forecastDate);
+    //console.log("Vorhersagezeitpunkt", forecastLabel);
+
+    layerControl.addOverlay(overlays.wind, `ECMWF Windvorhersage für ${forecastLabel}`)
 };
 loadWind("https://geographie.uibk.ac.at/webmapping/ecmwf/data/wind-10u-10v-europe.json");
 
