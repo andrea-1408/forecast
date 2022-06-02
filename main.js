@@ -97,6 +97,10 @@ async function loadWeather(url) {
     let forecastLabel = formatDate(forecastDate);
     //console.log(forecastLabel);
 
+    // Wettericon(s)
+    let symbol = jsondata.properties.timeseries[0].data.next_1_hours.summary.symbol_code;
+    
+
     let popup = `
         <strong>Wettervorhersage für ${forecastLabel}</strong>
         <ul>
@@ -123,5 +127,5 @@ map.on("click", function (evt) {
     console.log(url);
 
     loadWeather(url);
-    
+
 });
